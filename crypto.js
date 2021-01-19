@@ -12,9 +12,13 @@ const cryptInstace = axios.create({
 });
 
 module.exports ={
-	listAll: async ()=>{
+	listAll: async (convert='BRL')=>{
 		try{
-			let result = await cryptInstace.get('/listings/latest')
+			let result = await cryptInstace.get('/listings/latest',{
+				params:{
+					convert:convert
+				}
+			})
 			return result.data
 		}
 		catch (e) {
@@ -36,11 +40,12 @@ module.exports ={
 			return(e)
 		}
 	},
-	quotesLatest: async (symbol='BTC,ETH,XRP,BTH,LTC') => {
+	quotesLatest: async (symbol='BTC,ETH,XRP,BCH,LTC',convert='BRL') => {
 		try{
 			let r = await cryptInstace.get('/quotes/latest',{
 				params:{
-						symbol:symbol
+						symbol:symbol,
+						convert:convert
 					}
 				})
 			return r.data
@@ -50,5 +55,4 @@ module.exports ={
 			return(e)
 		}
 	}
-
 }
