@@ -1,6 +1,6 @@
 #Cryptocurrency Analytics
 
-This project use api to track tandency of crypptocurrency and report by slack
+This project use api to track tendency of cryptocurrency and report by Slack
 
 ##You will need:
 1. [CoinMarketCap Api](https://pro.coinmarketcap.com/)
