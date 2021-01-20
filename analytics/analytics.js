@@ -1,4 +1,5 @@
-const slack = require('./slack');
+const slack = require('../slack');
+const testes = require('./testes')
 
 var data = [];
 
@@ -45,15 +46,17 @@ module.exports = {
 			table.push(filter)
 			sigTable.push(mySig)
 
-			// let h1 = mySig.map((sig) =>{ return sig.percent_change_1h})
 
 			// console.log(data[i].data[currency])
 		}
 		
+		let h1 = await sigTable.map((sig) =>{ 
+			return sig.percent_change_1h;
+		})
 		console.table(table)
 		console.table(sigTable)
 
-		let sigAnalytics = await testSig(mySig['percent_change_1h'])
+		let sigAnalytics = await testes.testSig(h1)
 		if(sigAnalytics!==null)
 			await slack.sendMsg("1h percent" + sigAnalytics)
 
@@ -61,22 +64,3 @@ module.exports = {
 
 	}
 }
-
-async function testSig(sig){
-	let size = (sig.length -1)
-
-	if(sig[size]=='rising'){
-		if(sig[size-1] == 'falling'){
-			return "inversion to falling"
-		}else {
-			return null
-		}
-	} else{
-		if(sig[size-1] == 'rising'){
-			return "inversion to rising"
-		} else{
-			return null
-		}
-	}
-}
-

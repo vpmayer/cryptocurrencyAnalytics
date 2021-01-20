@@ -1,4 +1,3 @@
-
 const app = require('./app')
 
 var data = [];
@@ -23,5 +22,5 @@ async function server(){
 }
 
 server();
-
-setInterval(server,120*1000);
+//					min*seg*ms
+setInterval(server,10*60*1000);

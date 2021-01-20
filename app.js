@@ -1,6 +1,6 @@
 const slack = require('./slack')
 const crypto = require('./crypto')
-const analytics = require('./analytics');
+const analytics = require('./analytics/analytics');
 
 // The current date
 const currentTime = new Date().toTimeString();
