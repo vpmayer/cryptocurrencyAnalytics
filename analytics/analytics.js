@@ -1,5 +1,6 @@
+
 const slack = require('../slack');
-const testes = require('./testes')
+const testes = require('./testes');
 
 var data = [];
 
@@ -46,19 +47,22 @@ module.exports = {
 			table.push(filter)
 			sigTable.push(mySig)
 
-
 			// console.log(data[i].data[currency])
 		}
 		
 		let h1 = await sigTable.map((sig) =>{ 
 			return sig.percent_change_1h;
 		})
+		let date = new Date(Date.now());
+		console.log(`Cryptocurrency: ${currency} - Updated: ${date.toJSON()}`)
 		console.table(table)
-		console.table(sigTable)
+		
+		// console.table(sigTable)
+
 
 		let sigAnalytics = await testes.testSig(h1)
 		if(sigAnalytics!==null)
-			await slack.sendMsg("1h percent" + sigAnalytics)
+			await slack.sendMsg(currency + " 1h% " + sigAnalytics)
 
 		return table
 

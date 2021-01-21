@@ -17,5 +17,13 @@ module.exports = {
 				return null
 			}
 		}
+	},
+	difference: async(boughtVal=1.0,marketVal=1.0) =>{
+		let diff = (marketVal - boughtVal);
+		let percent = ((100.0*(marketVal/boughtVal)) - 100);
+		
+		return `
+			Difference =	${diff}
+			% gain =	${percent}`
 	}
 }
