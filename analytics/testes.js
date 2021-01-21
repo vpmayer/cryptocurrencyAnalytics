@@ -25,5 +25,11 @@ module.exports = {
 		return `
 			Difference =	${diff}
 			% gain =	${percent}`
-	}
+	},
+	diffNum: async(boughtVal=1.0,marketVal=1.0) =>{
+		let diff = (marketVal - boughtVal);
+		let percent = ((100.0*(marketVal/boughtVal)) - 100);
+		
+		return {diff,percent}
+	},
 }

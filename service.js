@@ -23,4 +23,4 @@ async function server(){
 
 server();
 //					min*seg*ms
-setInterval(server,10*60*1000);
+setInterval(server,5*60*1000);
