@@ -20,8 +20,8 @@ module.exports = async function app(){
 	console.log(await testes.difference(process.env.BTCV, result[2].data['BTC'].quote.BRL.price))
 	await analytics.inversionTest('ETH');
 	console.log(await testes.difference(process.env.ETHV, result[2].data['ETH'].quote.BRL.price))
-	await analytics.inversionTest('XRP');
-	console.log(await testes.difference(process.env.XRPV, result[2].data['XRP'].quote.BRL.price))
+	// await analytics.inversionTest('XRP');
+	// console.log(await testes.difference(process.env.XRPV, result[2].data['XRP'].quote.BRL.price))
 	// await analytics.inversionTest();
 
 
