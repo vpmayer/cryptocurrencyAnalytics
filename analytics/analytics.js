@@ -62,7 +62,9 @@ module.exports = {
 
 		let sigAnalytics = await testes.testSig(h1)
 		if(sigAnalytics!==null)
-			await slack.sendMsg(currency + " 1h% " + sigAnalytics)
+			await slack.sendMsg(`${currency} 1h% ${sigAnalytics}
+				Atual R$ ${table[2].price}
+				Anterior R$ ${table[1].price}`)
 
 		return table
 
